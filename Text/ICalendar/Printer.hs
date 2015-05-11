@@ -32,7 +32,7 @@ import qualified Data.Time                    as Time
 import qualified Data.Version                 as Ver
 import qualified Network.URI                  as URI
 import           Prelude                      hiding (mapM_)
-import qualified System.Locale                as L
+import qualified Data.Time.Format as L (defaultTimeLocale, dateTimeFmt)
 import           Text.Printf                  (printf)
 
 import           Codec.MIME.Type             (MIMEType, showMIMEType)

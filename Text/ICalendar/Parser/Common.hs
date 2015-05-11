@@ -29,7 +29,7 @@ import qualified Data.Time                    as Time
 import           Data.Traversable             (mapM)
 import qualified Network.URI                  as URI
 import           Prelude                      hiding (mapM)
-import qualified System.Locale                as L
+import qualified Data.Time.Format as L (defaultTimeLocale, dateTimeFmt)
 
 import qualified Text.Parsec            as P
 import           Text.Parsec.Combinator hiding (optional)
@@ -74,7 +74,7 @@ parseText' bs = do c <- asks dfBS2Text
                                        '\\' -> nxt '\\'
                                        ';' -> nxt ';'
                                        ',' -> nxt ','
-                                       z | z `elem` "nN" -> nxt '\n'
+                                       z | z `elem` ("nN" :: String) -> nxt '\n'
                                        _ -> fail $ "unexpected " ++ show x
                        y -> nxt y
         -- isTSafe + 0x22, 0x3A, and 0x5C is pattern matched against.
